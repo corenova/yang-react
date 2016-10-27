@@ -1,0 +1,28 @@
+module yang-react {
+  namespace "urn:ietf:params:xml:ns:yang:yang-react";
+  prefix react;
+  yang-version 1.1;
+
+  import ietf-yang-types  { prefix yang; }
+  import yang-meta-types  { prefix meta; }
+  //import yang-react-dom   { prefix dom; }
+
+  organization
+    "Corenova Technologies, Inc.";
+  contact
+    "Peter K. Lee <peter@corenova.com>";
+  reference
+    "https://facebook.github.io/react";
+
+  extension component {
+    argument component-name;
+    reference "https://facebook.github.io/react/docs/react-api.html#react.component";
+  }
+
+  rpc transform {
+    input {
+      
+    }
+  }
+
+}

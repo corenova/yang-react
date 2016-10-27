@@ -1,0 +1,21 @@
+swagger: '2.0'
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  '/yang-react:transform':
+    post:
+      summary: Invokes transform in yang-react
+      deprecated: false
+      parameters:
+        - name: 'transform:input'
+          in: body
+          schema:
+            type: object
+          required: false
+      responses:
+        '200':
+          description: Expected response of transform
+          schema: {}
+definitions: {}

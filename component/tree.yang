@@ -1,0 +1,20 @@
+react:component TreeNode {
+  leaf collapsible {
+    type boolean;
+    default true;
+  }
+  leaf collapsed {
+    type boolean;
+    default true;
+  }
+  leaf sort {
+    type boolean;
+    default true;
+  }
+  leaf key {
+    type string;
+  }
+  anydata value;
+  action toggle;
+}
+

@@ -1,0 +1,13 @@
+module react-router {
+  namespace "urn:ietf:params:xml:ns:yang:yang-react";
+  prefix rr;
+  yang-version 1.1;
+
+  import yang-react { prefix react; }
+
+  grouping Router {
+    uses react:component;
+    
+  }
+  
+}

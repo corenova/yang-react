@@ -1,0 +1,58 @@
+{
+  "name": "yang-react",
+  "version": "1.0.0",
+  "description": "YANG model-driven React framework",
+  "keywords": [
+    "yang",
+    "react",
+    "model",
+    "schema",
+    "adaptive",
+    "validate",
+    "object",
+    "frontend",
+    "visualize",
+    "rfc6020"
+  ],
+  "author": "Peter Lee <peter@corenova.com>",
+  "homepage": "https://github.com/corenova/yang-react",
+  "license": "Apache-2.0",
+  "repository": "corenova/yang-react",
+  "main": "./yang-react.js",
+  "bin": {
+    "yang-swagger": "./bin/yang-swagger"
+  },
+  "preferGlobal": true,
+  "models": {
+    "ietf-yang-types": "yang-js",
+    "yang-meta-types": "yang-js",
+    "yang-react": "./yang-react.yang"
+  },
+  "dependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "config": "^1.21.0",
+    "debug": "^2.2.0",
+    "react": "^15.3.2",
+    "yang-js": "^0.16.16"
+  },
+  "devDependencies": {
+    "coffee-script": ">=1.7.0",
+    "mocha": "~2.0.1",
+    "rimraf": "^2.5.2",
+    "should": "~3.1.3",
+    "yang-swagger": "^1.2.1"
+  },
+  "scripts": {
+    "clean": "rimraf dist/* lib/*",
+    "prebuild": "npm run clean -s && mkdir -p dist",
+    "build:src": "coffee -c *.coffee",
+    "build:api": "yang-swagger -f yaml -o swagger.yaml yang-react",
+    "build": "npm run build:src && npm run build:api",
+    "prepublish": "npm run build",
+    "pretest": "npm run build",
+    "test": "mocha"
+  }
+}
