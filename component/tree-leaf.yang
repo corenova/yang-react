@@ -1,0 +1,25 @@
+react:component TreeLeaf {
+  container props {
+    leaf key {
+      type string;
+      mandatory true;
+    }
+    leaf value {
+      // any type is accepted
+    }
+    leaf editable {
+      type boolean;
+      default false;
+    }
+  }
+  container state {
+    leaf editing {
+      type boolean;
+      default false;
+    }
+  }
+  action toggleEdit;
+  action renderData;
+  action onChange;
+}
+

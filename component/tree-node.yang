@@ -1,0 +1,34 @@
+react:component TreeNode {
+  container props {
+    leaf key {
+      type string;
+      mandatory true;
+    }
+    anydata value;
+    leaf collapsible {
+      type boolean;
+      default true;
+    }
+    leaf editable {
+      type boolean;
+      default false;
+    }
+    leaf level {
+      type uint8;
+      default 0;
+    }
+    leaf sort {
+      type boolean;
+      default true;
+    }
+  }
+  container state {
+    leaf collapsed {
+      type boolean;
+      default true;
+    }
+  }
+  action toggle;
+  action renderChild;
+}
+

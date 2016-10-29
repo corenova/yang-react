@@ -14,37 +14,53 @@
         global: true,
         scope: {
           action: '0..n',
-          anydata: '0..n',
-          leaf: '0..n',
-          'leaf-list': '0..n',
-          list: '0..n'
+          container: '0..n'
         },
         resolve: function() {
-          var required;
-          required = ['constructor', 'render'];
-          return this["extends"](required.map((function(_this) {
+          this["extends"](['render'].map((function(_this) {
             return function(x) {
               if (_this.locate("action(" + x + ")") == null) {
                 return _this.constructor.parse("action " + x + ";");
               }
             };
           })(this)));
+          return this["extends"](['props', 'state'].map((function(_this) {
+            return function(x) {
+              if (_this.locate("container(" + x + ")") == null) {
+                return _this.constructor.parse("container " + x + ";");
+              }
+            };
+          })(this)));
         },
         construct: function(data, ctx) {
-          var component, self;
+          var component, k, ref, schema, v;
           this.debug("making React.Component class");
-          self = this;
+          schema = this;
           component = (function(superClass) {
             extend(_Class, superClass);
 
             function _Class(props) {
-              _Class.__super__.constructor.call(this, self.apply(props));
+              var k, v;
+              _Class.__super__.constructor.apply(this, arguments);
+              this.state = {};
+              schema.apply(this);
+              for (k in this) {
+                if (!hasProp.call(this, k)) continue;
+                v = this[k];
+                if (v instanceof Function) {
+                  this[k] = v.bind(this);
+                }
+              }
             }
 
             return _Class;
 
           })(React.Component);
-          this.debug(component);
+          ref = this.apply(data);
+          for (k in ref) {
+            v = ref[k];
+            component.prototype[k] = v;
+          }
           return component;
         }
       };

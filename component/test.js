@@ -1,6 +1,16 @@
 import TreeNode from './tree'
 import React from 'react'
+import ReactTestUtils from 'react-addons-test-utils'
 
-console.log(TreeNode)
+const Renderer = ReactTestUtils.createRenderer()
 
-React.createElement(TreeNode, { value: {}})
+const obj = {
+  hello: {
+	world: 'bye'
+  }
+}
+Renderer.render(
+  <TreeNode key='test' value={obj}>some random text</TreeNode>
+)
+
+export default Renderer.getRenderOutput()
